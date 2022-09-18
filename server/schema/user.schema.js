@@ -1,15 +1,25 @@
 import { Entity, Schema } from "redis-om"
 import client from "../redis/db"
 
-class User extends Entity {}
+class User extends Entity {
+  toJSON() {
+    return {
+      user_id: this.entityId,
+      user_name: this.user_name,
+      user_email: this.user_email,
+      user_profile: this.user_profile,
+      google_id: this.google_id,
+    }
+  }
+}
 
 userSchema = new Schema(
   User,
   {
-    username: { type: "string" },
-    userEmail: { type: "string" },
-    userProfile: { type: "string" },
-    googleId: { type: "string" },
+    user_name: { type: "string" },
+    user_email: { type: "string" },
+    user_profile: { type: "string" },
+    google_id: { type: "string" },
   },
   {
     dataStructure: "JSON",

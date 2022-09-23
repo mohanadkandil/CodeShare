@@ -8,5 +8,5 @@ export const initSocketClient = async () => {
     timeout: 10000,
     transports: ["websocket"],
   }
-  return io(utl, options)
+  return io(url, options)
 }

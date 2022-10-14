@@ -8,12 +8,12 @@ export const ContextStore = createContext()
 
 const Context = (props) => {
   const token = Cookies.get("token_codeshare")
-  const [isModel, setIsModel] = useState(false)
+  const [isModal, setIsModal] = useState(false)
   const [userData, setUserData] = useState([])
   const [code, setCode] = useState([])
 
-  const handleModel = () => {
-    if (token) setIsModel((prev) => !prev)
+  const handleModal = () => {
+    if (token) setIsModal((prev) => !prev)
     else toast.info("Login to save code !")
   }
 
@@ -35,7 +35,7 @@ const Context = (props) => {
     <>
       <ContextStore.Provider
         value={{
-          modelData: [isModel, setIsModel, handleModel],
+          modalData: [isModal, setIsModal, handleModal],
           userInfo: [userData, setUserData],
           code: [code, setCode],
         }}

@@ -45,5 +45,3 @@ const Context = (props) => {
     </>
   )
 }
-
-export default Context

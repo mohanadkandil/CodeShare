@@ -5,9 +5,11 @@ import EdidtorSidebar from "../components/EditorSidebar"
 import { ContextStore } from "../utils/Context"
 import { initSocketClient } from "../utils/socket"
 import { join, joined, disconnecting } from "../utils/libs.jsx"
-import { editor } from "monaco-editor"
-import { languageOptions } from "../constants/languageOptions.js"
+import { languageOptions } from "../constants/languageOptions"
 import LanguagesDropdown from "../components/LanguageDropdown"
+import ThemeDropdown from "../components/ThemeDropdown"
+import { defineTheme } from "../lib/defineTheme"
+import CodeEditorWindow from "../components/CodeEditorWindow"
 
 const javascriptDefault = "// some comment"
 
@@ -45,7 +47,13 @@ export default function Editor() {
 
   const checkStatus = async (token: string) => {}
 
-  const handleThemeChange = (theme: string) => {}
+  const handleThemeChange = (th: any) => {
+    const theme = th
+    console.log("theme....", theme)
+
+    if (["light", "vs-dark"].includes(theme.value)) setTheme(theme)
+    else defineTheme(theme.value).then(() => setTheme(theme))
+  }
 
   // useEffect(() => {})
 
@@ -60,11 +68,11 @@ export default function Editor() {
         <div className="px-4 py-2">
           <LanguagesDropdown onSelectChange={onSelectChange} />
         </div>
-        {/* <div className="px-4 py-2">
+        <div className="px-4 py-2">
           <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
-        </div> */}
+        </div>
       </div>
-      {/* <div className="flex flex-row space-x-4 items-start px-4 py-4">
+      <div className="flex flex-row space-x-4 items-start px-4 py-4">
         <div className="flex flex-col w-full h-full justify-start items-end">
           <CodeEditorWindow
             code={code}
@@ -74,7 +82,7 @@ export default function Editor() {
           />
         </div>
 
-        <div className="right-container flex flex-shrink-0 w-[30%] flex-col">
+        {/* <div className="right-container flex flex-shrink-0 w-[30%] flex-col">
           <OutputWindow outputDetails={outputDetails} />
           <div className="flex flex-col items-end">
             <CustomInput
@@ -93,9 +101,9 @@ export default function Editor() {
             </button>
           </div>
           {outputDetails && <OutputDetails outputDetails={outputDetails} />}
-        </div>
+        </div> */}
       </div>
-      <Footer /> */}
+      {/* <Footer /> */}
     </>
   )
 }

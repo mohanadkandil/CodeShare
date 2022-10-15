@@ -1,4 +1,4 @@
-export const OutputWindow = () => {
+export const OutputWindow = ({ outputDetails }) => {
   const getOutput = () => {
     let statusId = 20
 

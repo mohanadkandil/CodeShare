@@ -1,16 +1,13 @@
-import { useContext, useEffect, useRef, useState } from "react"
-import { Navigate, useLocation, useNavigate } from "react-router-dom"
-import { toast } from "react-toastify"
-import EdidtorSidebar from "../components/EditorSidebar"
-import { ContextStore } from "../utils/Context"
-import { initSocketClient } from "../utils/socket"
-import { join, joined, disconnecting } from "../utils/libs.jsx"
+import { useState } from "react"
 import { languageOptions } from "../constants/languageOptions"
 import LanguagesDropdown from "../components/LanguageDropdown"
 import ThemeDropdown from "../components/ThemeDropdown"
 import { defineTheme } from "../lib/defineTheme"
 import CodeEditorWindow from "../components/CodeEditorWindow"
 import { OutputWindow } from "../components/OutputWindow"
+import { OutputDetails } from "../components/OutputDetails"
+import { classNames } from "../utils/classnames"
+import { CustomInput } from "../components/CustomInput"
 
 const javascriptDefault = "// some comment"
 
@@ -86,22 +83,22 @@ export default function Editor() {
         <div className="right-container flex flex-shrink-0 w-[30%] flex-col">
           <OutputWindow outputDetails={outputDetails} />
           <div className="flex flex-col items-end">
-            {/* <CustomInput
+            <CustomInput
               customInput={customInput}
               setCustomInput={setCustomInput}
             />
             <button
               onClick={handleCompile}
               disabled={!code}
-              className={classnames(
+              className={classNames(
                 "mt-4 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0",
                 !code ? "opacity-50" : ""
               )}
             >
               {processing ? "Processing..." : "Compile and Execute"}
-            </button> */}
+            </button>
           </div>
-          {/* {outputDetails && <OutputDetails outputDetails={outputDetails} />} */}
+          {outputDetails && <OutputDetails outputDetails={outputDetails} />}
         </div>
       </div>
       {/* <Footer /> */}

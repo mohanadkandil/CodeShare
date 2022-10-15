@@ -10,6 +10,7 @@ import LanguagesDropdown from "../components/LanguageDropdown"
 import ThemeDropdown from "../components/ThemeDropdown"
 import { defineTheme } from "../lib/defineTheme"
 import CodeEditorWindow from "../components/CodeEditorWindow"
+import { OutputWindow } from "../components/OutputWindow"
 
 const javascriptDefault = "// some comment"
 
@@ -82,10 +83,10 @@ export default function Editor() {
           />
         </div>
 
-        {/* <div className="right-container flex flex-shrink-0 w-[30%] flex-col">
+        <div className="right-container flex flex-shrink-0 w-[30%] flex-col">
           <OutputWindow outputDetails={outputDetails} />
           <div className="flex flex-col items-end">
-            <CustomInput
+            {/* <CustomInput
               customInput={customInput}
               setCustomInput={setCustomInput}
             />
@@ -98,10 +99,10 @@ export default function Editor() {
               )}
             >
               {processing ? "Processing..." : "Compile and Execute"}
-            </button>
+            </button> */}
           </div>
-          {outputDetails && <OutputDetails outputDetails={outputDetails} />}
-        </div> */}
+          {/* {outputDetails && <OutputDetails outputDetails={outputDetails} />} */}
+        </div>
       </div>
       {/* <Footer /> */}
     </>
